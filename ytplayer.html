@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<meta name="description" content="description">
+	<meta name="keywords" content="keywords">
+	<meta name="author" content="Jan Pecha, http://janpecha.iunas.cz/">
+	<meta name="viewport" content="width=device-width">
+	<!-- <meta n:ifset="$robots" name="robots" content="{$robots}noindex, nofollow | index, follow | all"> -->
+	
+<!--	<link rel="stylesheet" media="screen,projection,tv" href="./css/screen.css" type="text/css">-->
+<!--	<link rel="stylesheet" media="print" href="./css/print.css" type="text/css">-->
+	<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="desktop.css"><![endif]-->
+	
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	
+	<title>YtPlayer example</title>
+	<style type="text/css">
+	.ytplayer-playing {
+		background: navy;
+	}
+	
+	.ytplayer-button-active {
+		background: green;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>YtPlayer example</h1>
+		<div id="ytplayer"></div>
+	</div>
+	
+	<script type="text/javascript" src="zepto.js"></script>
+	<script type="text/javascript" src="ytplayer.zepto.js"></script>
+	<script type="text/javascript">
+		Zepto(function($){
+			YtPlayer.create('ytplayer', [
+				{name: 'YT example video', id: 'u1zgFlCw8Aw'},
+				{name: 'Matrix - Dodge this!', id: 'ggFKLxAQBbc'},
+				{name: 'Tož bugatti step <strong>Bad sound!</strong>', id: 'Gqhaoa9ukqg'}
+			], {
+				cycle: true
+			});
+		})
+	</script>
+</body>
+</html>
