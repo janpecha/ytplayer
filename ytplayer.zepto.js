@@ -1,8 +1,7 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-04-1
+ * @version		2012-06-04-2
  * @license		see license.txt
- * @todo		2012-06-03 - create CSS stylesheet
  */
 
 var YtPlayer = YtPlayer || {};
@@ -11,7 +10,6 @@ var YtPlayer = YtPlayer || {};
 YtPlayer.player = null;
 YtPlayer.options = {};
 YtPlayer.list = {};
-//YtPlayer.playerId = '';
 YtPlayer.played = 0;
 
 
@@ -22,7 +20,7 @@ YtPlayer.create = function(elementId, videoList, options) {
 	options.height = options.height || 390;
 	options.playerId = options.playerId || 'ytplayer-ytplayer';
 	options.tryNum = options.tryNum || 10;
-	//options.loadInfos = options.playerId || false;
+
 	options.strNext = options.strNext || 'Next';
 	options.strPrev = options.strPrev || 'Prev';
 	options.strCycle = options.strCycle || 'Cycle';
@@ -269,7 +267,7 @@ YtPlayer.onPlayerStateChange = function(event) {
 
 YtPlayer.onPlayerReady = function(event) {
 	$('#ytplayer-item-' + event.target.getVideoData().video_id).addClass('ytplayer-playing');
-//	event.target.playVideo();
+	event.target.playVideo();
 }
 
 
