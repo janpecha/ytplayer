@@ -20,6 +20,7 @@ YtPlayer.create = function(elementId, videoList, options) {
 	options.width = options.width || 640;
 	options.height = options.height || 390;
 	options.playerId = options.playerId || 'ytplayer-ytplayer';
+	options.tryNum = options.tryNum || 10;
 	//options.loadInfos = options.playerId || false;
 	options.strNext = options.strNext || 'Next';
 	options.strPrev = options.strPrev || 'Prev';
@@ -181,11 +182,17 @@ YtPlayer.nextVideo = function(cycle) {
 	if(YtPlayer.options.randomly)
 	{
 		var n_played = YtPlayer.played;
+		var trynum = YtPlayer.options.tryNum;
 		
-		// TODO: obrana proti zacykleni
 		while(YtPlayer.played === n_played)
 		{
 			n_played = Math.floor(Math.random() * YtPlayer.list.length);
+			trynum --;
+			
+			if(trynum <= 0)
+			{
+				break;
+			}
 		}
 		
 		YtPlayer.played = n_played;
