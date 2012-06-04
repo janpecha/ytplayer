@@ -71,14 +71,17 @@ YtPlayer.create = function(elementId, videoList, options) {
 
 
 YtPlayer.createElements = function(elementId, options) {
-	$('#' + elementId).first().html('<div id="' + options.playerId + '"></div>'
-		+ '<div class="ytplayer-control-bar">'
-			+ '<span class="ytplayer-control-prev">' + options.strPrev + '</span> '
-			+ '<span class="ytplayer-control-next">' + options.strNext + '</span> '
-			+ '<span class="ytplayer-control-cycle">' + options.strCycle + '</span> '
-			+ '<span class="ytplayer-control-random">' + options.strRandom + '</span>'
+	$('#' + elementId).first().html('<div class="ytplayer-box" style="width:' + options.width + 'px">'
+			+ '<div id="' + options.playerId + '"></div>'
+			+ '<div class="ytplayer-control-bar">'
+				+ '<span class="ytplayer-control-prev ytplayer-btn">' + options.strPrev + '</span> '
+				+ '<span class="ytplayer-control-next ytplayer-btn">' + options.strNext + '</span> '
+				+ '<span class="ytplayer-control-cycle ytplayer-btn">' + options.strCycle + '</span> '
+				+ '<span class="ytplayer-control-random ytplayer-btn">' + options.strRandom + '</span>'
+				+ '<span class="ytplayer-clearer">&nbsp;</span>'
+			+ '</div>'
+			+ '<div class="ytplayer-videolist"></div>'
 		+ '</div>'
-		+ '<div class="ytplayer-videolist"></div>'
 	);
 }
 
@@ -265,7 +268,7 @@ YtPlayer.onPlayerStateChange = function(event) {
 
 YtPlayer.onPlayerReady = function(event) {
 	$('#ytplayer-item-' + event.target.getVideoData().video_id).addClass('ytplayer-playing');
-	event.target.playVideo();
+//	event.target.playVideo();
 }
 
 

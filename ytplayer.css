@@ -1,0 +1,110 @@
+/**
+ * @author		Jan Pecha, <janpecha@email.cz>
+ * @version		2012-06-04-1
+ */
+
+/* Player box */
+.ytplayer-box {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-color: #bbb;
+	border-radius: 4px;
+	padding: 6px;
+	cursor: default;
+}
+
+
+/* Control bar */
+.ytplayer-control-bar {
+	background: #eee;
+/*	border: 1px solid #ddd;*/
+/*	margin-bottom: 0.8em;*/
+/*	margin-bottom: 4px;*/
+	padding: 4px;
+	border: 1px solid #bbb;
+	border-width: 0 1px 1px;
+	margin-top: -4px;
+}
+
+/* Video list */
+.ytplayer-videolist {
+	clear: both;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border: 1px solid #bbb;
+	border-top-color: #ddd;
+	overflow: hidden;
+	padding-bottom: 2px;
+}
+
+.ytplayer-videoitem {
+	padding: 0.4em 0.6em;
+/*	border-radius: 4px;*/
+	cursor: pointer;
+	margin-bottom: 2px;
+}
+
+.ytplayer-videoitem:hover {
+	background: #eee;
+	background-color: #ddd;
+}
+
+.ytplayer-playing {
+	background: navy;
+	background: #eee;
+	background: #729fcf;
+	color: #fff;
+}
+
+.ytplayer-playing:hover {
+	background-color: #204a87;
+}
+
+/* Buttons */
+.ytplayer-btn {
+	font-size: 90%;
+	border: 1px solid #ddd;
+	border-color: #aaa;
+	border-radius: 4px;
+	background: #eee;
+	padding: 0.4em;
+	display: block;
+	float: left;
+	margin: 0 0.2em;
+	cursor: pointer;
+}
+
+.ytplayer-btn:hover {
+	border-color: #bbb;
+	background: #ccc;
+	border-color: #fff;
+	border-color: #eee;
+}
+
+.ytplayer-button-active {
+	background: #93CF6A;
+	background: #709E51;
+	background: #499517;
+	color: #fff;
+	border-color: #2D5B0E;
+
+}
+
+.ytplayer-button-active:hover {
+	border-color: #fff;
+	background: #58A823;
+	border-color: #eee;
+}
+
+
+/* Other */
+.ytplayer-clearer {
+	visibility: hidden;
+	clear: both;
+	display: block;
+	height: 0.1em;
+}
