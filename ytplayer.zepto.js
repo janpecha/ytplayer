@@ -180,8 +180,15 @@ YtPlayer.playVideo = function(videoId, videoNum) {
 YtPlayer.nextVideo = function(cycle) {
 	if(YtPlayer.options.randomly)
 	{
-		// TODO: kontrola aby se neprehravalo jedno a to same video dokola (if random !== played)...
-		YtPlayer.played = Math.floor(Math.random() * YtPlayer.list.length);
+		var n_played = YtPlayer.played;
+		
+		// TODO: obrana proti zacykleni
+		while(YtPlayer.played === n_played)
+		{
+			n_played = Math.floor(Math.random() * YtPlayer.list.length);
+		}
+		
+		YtPlayer.played = n_played;
 	}
 	else
 	{
