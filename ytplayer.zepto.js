@@ -1,6 +1,7 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
  * @version		2012-06-04-1
+ * @license		see license.txt
  * @todo		2012-06-03 - create CSS stylesheet
  */
 
