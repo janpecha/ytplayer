@@ -1,6 +1,6 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-03-1
+ * @version		2012-06-04-1
  * @todo		2012-06-03 - create CSS stylesheet
  */
 
@@ -24,11 +24,26 @@ YtPlayer.create = function(elementId, videoList, options) {
 	options.strNext = options.strNext || 'Next';
 	options.strPrev = options.strPrev || 'Prev';
 	options.strCycle = options.strCycle || 'Cycle';
-	//options.strRandom = options.strRandom || 'Random';
+	options.strRandom = options.strRandom || 'Random';
 	
 	if(typeof options.cycle === "undefined")
 	{
 		options.cycle = true;
+	}
+	else
+	{
+		// convert to (bool)
+		options.cycle = !!options.cycle;
+	}
+	
+	if(typeof options.randomly === "undefined")
+	{
+		options.randomly = false;
+	}
+	else
+	{
+		// convert to (bool)
+		options.randomly = !!options.randomly;
 	}
 	
 	YtPlayer.options = options;
@@ -48,6 +63,9 @@ YtPlayer.create = function(elementId, videoList, options) {
 	
 	// Update Cycle button
 	YtPlayer.updateCycleButton($('#' + elementId + ' .ytplayer-control-cycle').first());
+	
+	// Update Random button
+	YtPlayer.updateRandomButton($('#' + elementId + ' .ytplayer-control-random').first());
 }
 
 
@@ -57,7 +75,7 @@ YtPlayer.createElements = function(elementId, options) {
 			+ '<span class="ytplayer-control-prev">' + options.strPrev + '</span> '
 			+ '<span class="ytplayer-control-next">' + options.strNext + '</span> '
 			+ '<span class="ytplayer-control-cycle">' + options.strCycle + '</span> '
-			//+ '<span class="ytplayer-control-random">' + options.strRandom + '</span>'
+			+ '<span class="ytplayer-control-random">' + options.strRandom + '</span>'
 		+ '</div>'
 		+ '<div class="ytplayer-videolist"></div>'
 	);
@@ -119,6 +137,20 @@ YtPlayer.buttonsEventBind = function(elementId) {
 		
 		YtPlayer.updateCycleButton(this);
 	});
+	
+	// Random button
+	$('#' + elementId + ' .ytplayer-control-random').first().on('click', function() {
+		if(YtPlayer.options.randomly === true)
+		{
+			YtPlayer.options.randomly = false;
+		}
+		else
+		{
+			YtPlayer.options.randomly = true;
+		}
+		
+		YtPlayer.updateRandomButton(this);
+	});
 }
 
 
@@ -146,18 +178,26 @@ YtPlayer.playVideo = function(videoId, videoNum) {
 
 
 YtPlayer.nextVideo = function(cycle) {
-	YtPlayer.played ++;
-		
-	if(YtPlayer.played >= YtPlayer.list.length)
+	if(YtPlayer.options.randomly)
 	{
-		if(cycle)
+		// TODO: kontrola aby se neprehravalo jedno a to same video dokola (if random !== played)...
+		YtPlayer.played = Math.floor(Math.random() * YtPlayer.list.length);
+	}
+	else
+	{
+		YtPlayer.played ++;
+		
+		if(YtPlayer.played >= YtPlayer.list.length)
 		{
-			YtPlayer.played = 0;
-		}
-		else
-		{
-			YtPlayer.played --;
-			return false;
+			if(cycle)
+			{
+				YtPlayer.played = 0;
+			}
+			else
+			{
+				YtPlayer.played --;
+				return false;
+			}
 		}
 	}
 	
@@ -189,10 +229,19 @@ YtPlayer.updateCycleButton = function(cycleButton) {
 }
 
 
+YtPlayer.updateRandomButton = function(randomButton) {
+	if(YtPlayer.options.randomly === true)
+	{
+		$(randomButton).addClass('ytplayer-button-active');
+	}
+	else
+	{
+		$(randomButton).removeClass('ytplayer-button-active');
+	}
+}
+
+
 YtPlayer.onPlayerStateChange = function(event) {
-	// aktualizace udaju
-	// kdyz end tak dalsi video
-	// v tomto miste by mohlo byt implementovano nahodne prehravani - presun do next/prev
 	if(event.data == YT.PlayerState.ENDED)
 	{
 		YtPlayer.nextVideo(YtPlayer.options.cycle);
