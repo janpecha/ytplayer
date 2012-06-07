@@ -283,7 +283,7 @@ YtPlayer.onPlayerStateChange = function(event) {
 
 YtPlayer.onPlayerReady = function(event) {
 	$('#ytplayer-item-' + event.target.getVideoData().video_id).addClass('ytplayer-playing');
-	//event.target.playVideo();
+	event.target.playVideo();
 }
 
 

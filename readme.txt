@@ -64,6 +64,7 @@ Options
 	
 	- cycle (bool) - default: true
 	- randomly (bool) - default: false
+	- thumbs (bool) - default: false
 
 
 Example
