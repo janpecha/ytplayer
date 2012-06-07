@@ -1,6 +1,6 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-04-1
+ * @version		2012-06-07-1
  * @license		see license.txt
  */
 
@@ -46,12 +46,33 @@
 	padding: 0.4em 0.6em;
 /*	border-radius: 4px;*/
 	cursor: pointer;
-	margin-bottom: 2px;
+/*	margin-bottom: 2px;*/
+	line-height: 2em;
+	border-bottom: 1px solid silver;
 }
+
+.ytplayer-videoitem:last-child {
+	border: none;
+}
+
+/*.ytplayer-videoitem:nth-child(even) { background: #fff; }*/
+/*.ytplayer-videoitem:nth-child(odd) { background: #eee; }*/
 
 .ytplayer-videoitem:hover {
 	background: #eee;
 	background-color: #ddd;
+}
+
+.ytplayer-name {
+	clear: both;
+	font-size: 90%;
+	color: #333;
+}
+
+.ytplayer-img img {
+	max-height: 32px;
+	vertical-align: middle;
+	padding-right: 8px;
 }
 
 .ytplayer-playing {
@@ -63,6 +84,10 @@
 
 .ytplayer-playing:hover {
 	background-color: #204a87;
+}
+
+.ytplayer-playing .ytplayer-name {
+	color: inherit;
 }
 
 /* Buttons */

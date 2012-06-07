@@ -46,6 +46,16 @@ YtPlayer.create = function(elementId, videoList, options) {
 		options.randomly = !!options.randomly;
 	}
 	
+	if(typeof options.thumbs === "undefined")
+	{
+		options.thumbs = false;
+	}
+	else
+	{
+		// convert to (bool)
+		options.thumbs = !!options.thumbs;
+	}
+	
 	YtPlayer.options = options;
 	YtPlayer.list = videoList;
 	
@@ -53,7 +63,7 @@ YtPlayer.create = function(elementId, videoList, options) {
 	YtPlayer.createElements(elementId, options);
 	
 	// Fill video list
-	YtPlayer.setVideoList(elementId, videoList);
+	YtPlayer.setVideoList(elementId, videoList, options.thumbs);
 	
 	// Init Youtube API
 	YtPlayer.initYoutubeApi();
@@ -85,25 +95,31 @@ YtPlayer.createElements = function(elementId, options) {
 }
 
 
-YtPlayer.setVideoList = function(elementId, videoList) {
+YtPlayer.setVideoList = function(elementId, videoList, thumbs) {
 	var videoListElement = $('#' + elementId + ' .ytplayer-videolist').first();
 	
 	for(var i = 0; i < videoList.length; i++)
 	{
-		var item = $(
-			'<div class="ytplayer-videoitem" id="ytplayer-item-' + videoList[i].id + '">'
-				+ '<span class="ytplayer-name">' + videoList[i].name + '</span>'
-			+ '</div>'
-		)
-		.data('ytplayer-video-id', videoList[i].id)
-		.data('ytplayer-video-num', i)
-		.on('click', function() {
-			var item = $(this);
+		var htmlCode = '<div class="ytplayer-videoitem" id="ytplayer-item-' + videoList[i].id + '">';
 		
-			YtPlayer.playVideo(item.data('ytplayer-video-id'), item.data('ytplayer-video-num'));
+		if(thumbs)
+		{
+			htmlCode += '<span class="ytplayer-img"><img src="http://img.youtube.com/vi/' + videoList[i].id + '/default.jpg" alt=""></span>';
+		}
 		
-			return false;
-		});
+		htmlCode += '<span class="ytplayer-name">' + videoList[i].name + '</span>'
+		htmlCode += '</div>';
+		
+		var item = $(htmlCode)
+			.data('ytplayer-video-id', videoList[i].id)
+			.data('ytplayer-video-num', i)
+			.on('click', function() {
+				var item = $(this);
+		
+				YtPlayer.playVideo(item.data('ytplayer-video-id'), item.data('ytplayer-video-num'));
+		
+				return false;
+			});
 		
 		videoListElement.append(item);
 	}
@@ -267,7 +283,7 @@ YtPlayer.onPlayerStateChange = function(event) {
 
 YtPlayer.onPlayerReady = function(event) {
 	$('#ytplayer-item-' + event.target.getVideoData().video_id).addClass('ytplayer-playing');
-	event.target.playVideo();
+	//event.target.playVideo();
 }
 
 
