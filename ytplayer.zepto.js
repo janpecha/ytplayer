@@ -1,6 +1,6 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-04-2
+ * @version		2012-06-07-1
  * @license		see license.txt
  */
 
