@@ -8,25 +8,30 @@ Usage
 	<link rel="stylesheet" media="screen,projection,tv" href="ytplayer.css" type="text/css">
 
 
-2) Import Zepto.js & ytplayer.zepto.js
+2) Import Zepto.js or JQuery
+
+	Zepto.js:
 	<script type="text/javascript" src="zepto.js"></script>
-	<script type="text/javascript" src="ytplayer.zepto.js"></script>
+	
+	JQuery:
+	<script type="text/javascript" src="jquery.min.js"></script>
+
+3) Import YtPlayer
+	<script type="text/javascript" src="ytplayer.js"></script>
 
 
-3) Add to page <div> with any ID
+4) Add to page <div> with any ID
 	<div id="ytplayer"></div>
 
 
-4) Create player (set options & list of videos)
+5) Create player (set options & list of videos)
 	<script type="text/javascript">
-		Zepto(function($){
-			YtPlayer.create(yourDivId, listOfVideos[, options]);
-		});
+		YtPlayer.create(yourDivId, listOfVideos[, options]);
 	</script>
 
-	- yourDiv - string
+	- yourDivId - string
 	- listOfVideos - array of objects
-	- options - object
+	- options - object - [optional]
 
 
 List of videos

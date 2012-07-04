@@ -14,14 +14,16 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>YtPlayer example</h1>
+		<h1>YtPlayer example <sup style="font-size: 50%;font-weight:normal;"><a href="https://github.com/janpecha/ytplayer">source</a> | 
+		 <a href="http://janpecha.iunas.cz/" title="Jan Pecha &copy; 2012">author</a></sup></h1>
 		<div id="ytplayer"></div>
 	</div>
 	
 	<script type="text/javascript" src="zepto.js"></script>
-	<script type="text/javascript" src="ytplayer.zepto.js"></script>
+<!--	<script type="text/javascript" src="jquery.min.js"></script>-->
+	<script type="text/javascript" src="ytplayer.js"></script>
 	<script type="text/javascript">
-		Zepto(function($){
+		//Zepto(function($){
 			YtPlayer.create('ytplayer', [
 				{name: 'YT example video', id: 'u1zgFlCw8Aw'},
 				{name: 'Matrix - Dodge this!', id: 'ggFKLxAQBbc'},
@@ -35,7 +37,7 @@
 				//strNext: 'Další',
 				//strCycle: 'Dokola'
 			});
-		})
+		//});
 	</script>
 </body>
 </html>
