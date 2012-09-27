@@ -1,6 +1,6 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-07-1
+ * @version		2012-09-27-1
  * @license		see license.txt
  */
 
@@ -100,7 +100,7 @@ YtPlayer.setVideoList = function(elementId, videoList, thumbs) {
 	
 	for(var i = 0; i < videoList.length; i++)
 	{
-		var htmlCode = '<div class="ytplayer-videoitem" id="ytplayer-item-' + videoList[i].id + '">';
+		var htmlCode = '<div class="ytplayer-videoitem" id="' + elementId + '-item-' + videoList[i].id + '">';
 		
 		if(thumbs)
 		{
