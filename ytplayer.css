@@ -1,6 +1,7 @@
-/**
+/** YtPlayer default stylesheet
+ * 
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-07-1
+ * @version		2012-09-27-1
  * @license		see license.txt
  */
 
@@ -49,6 +50,10 @@
 /*	margin-bottom: 2px;*/
 	line-height: 2em;
 	border-bottom: 1px solid silver;
+}
+
+.ytplayer-videoitem:nth-child(even) {
+	background: #f4f4f4;
 }
 
 .ytplayer-videoitem:last-child {
