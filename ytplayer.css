@@ -80,7 +80,8 @@
 	padding-right: 8px;
 }
 
-.ytplayer-playing {
+.ytplayer-playing,
+.ytplayer-playing:nth-child(even) {
 	background: navy;
 	background: #eee;
 	background: #729fcf;
