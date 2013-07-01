@@ -89,7 +89,7 @@ Options
 Example
 -------
 
-- see file ```ytplayer.html```
+- see file ```index.html```
 
 
 License
